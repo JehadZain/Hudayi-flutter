@@ -10,7 +10,6 @@ import 'package:hudayi/ui/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hudayi/l10n/app_localizations.dart';
-
 import 'package:hudayi/ui/widgets/custom_scroll_bhaviour.dart';
 import 'package:hudayi/ui/widgets/translations.dart';
 import 'package:provider/provider.dart';
