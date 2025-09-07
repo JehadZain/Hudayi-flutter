@@ -1,0 +1,6 @@
+{
+  "ar": [
+    "accountInactive_tr",
+    "accountPending_tr"
+  ]
+}

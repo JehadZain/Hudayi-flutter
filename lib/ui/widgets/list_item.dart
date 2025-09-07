@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+
+class ListItem extends StatelessWidget {
+  const ListItem({
+    Key? key,
+    required this.title,
+    required this.icon,
+    required this.onTap,
+  }) : super(key: key);
+  final String title;
+  final String icon;
+  final Function onTap;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          margin: const EdgeInsets.only(
+            top: 5.0,
+            bottom: 5.0,
+            left: 10.0,
+            right: 10.0,
+          ),
+          child: Material(
+            color: Theme.of(context).brightness == Brightness.light ? Colors.grey[100] : const Color(0xff33477f).withOpacity(0.2),
+            borderRadius: BorderRadius.circular(8),
+            clipBehavior: Clip.hardEdge,
+            child: ListTile(
+              onTap: () => onTap.call(),
+              title: Text(
+                title,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 22,
+                color:  Color(0xff33477f),
+              ),
+              leading: Image.asset(
+                icon,
+                width: 40,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
