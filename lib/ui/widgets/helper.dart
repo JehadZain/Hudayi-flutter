@@ -1,5 +1,5 @@
-import 'package:hudayi/ui/styles/appBorderRadius.dart';
-import 'package:hudayi/ui/styles/appBoxShadow.dart';
+import 'package:hudayi/ui/styles/app_Border_Radius.dart';
+import 'package:hudayi/ui/styles/app_Box_Shadow.dart';
 import 'package:flutter/material.dart' show BoxDecoration, BuildContext, SizedBox, Theme;
 
 class Helper {

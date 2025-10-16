@@ -7,16 +7,16 @@ import 'package:hudayi/models/user_model.dart';
 import 'package:hudayi/screens/add/add.dart';
 import 'package:hudayi/services/API/api.dart';
 import 'package:hudayi/services/pref_utils.dart';
-import 'package:hudayi/ui/helper/AppConsts.dart';
-import 'package:hudayi/ui/helper/AppFunctions.dart';
-import 'package:hudayi/ui/widgets/CirculeProgress.dart';
-import 'package:hudayi/ui/widgets/gridViewList.dart';
-import 'package:hudayi/ui/widgets/noData.dart';
+import 'package:hudayi/ui/helper/App_Consts.dart';
+import 'package:hudayi/ui/helper/App_Functions.dart';
+import 'package:hudayi/ui/widgets/Circule_Progress.dart';
+import 'package:hudayi/ui/widgets/grid_View_List.dart';
+import 'package:hudayi/ui/widgets/no_Data.dart';
 import 'package:hudayi/ui/widgets/statistics.dart';
 import 'package:provider/provider.dart';
 
-import '../../../ui/helper/AppConstants.dart';
-import '../../../ui/helper/AppDialog.dart';
+import '../../../ui/helper/App_Constants.dart';
+import '../../../ui/helper/App_Dialog.dart';
 
 class ClassProfile extends StatefulWidget {
   final TextEditingController searchController;
@@ -36,7 +36,7 @@ class _ClassProfileState extends State<ClassProfile> {
   List classGroup = [];
   bool isLoading = false;
   String classType = "";
-  var authService;
+  late AuthService authService;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -46,15 +46,18 @@ class _ClassProfileState extends State<ClassProfile> {
   getClass() async {
     try {
       classGroup.clear();
-      setState(() {
-        isLoading = true;
-      });
+      if (mounted) {
+        setState(() {
+          isLoading = true;
+        });
+      }
       String classesGroup = await PrefUtils.getClasses() ?? "";
       List classesLocale = classesGroup == "" ? [] : jsonDecode(await PrefUtils.getClasses());
       if (isConnected != false) {
         classesLocale.removeWhere((element) => element["property_id"] == widget.details["id"]);
 
         ApiService().getClassDetails(widget.details["id"], jsonDecode(authService.user.toUser())["token"]).then((value) {
+          if (!mounted) return;
           setState(() {
             classType = value["data"]["property"] == null ? "" : value["data"]["property"]["property_type"];
             classGroup.addAll(value["data"]["class_rooms"]);
@@ -69,15 +72,19 @@ class _ClassProfileState extends State<ClassProfile> {
         List classesGroup = jsonDecode(await PrefUtils.getClasses());
 
         List list = classesGroup.firstWhere((element) => element["property_id"] == widget.details["id"])["class_rooms"] ?? [];
+        if (mounted) {
+          setState(() {
+            classGroup.addAll(list);
+            isLoading = false;
+          });
+        }
+      }
+    } catch (e) {
+      if (mounted) {
         setState(() {
-          classGroup.addAll(list);
           isLoading = false;
         });
       }
-    } catch (e) {
-      setState(() {
-        isLoading = false;
-      });
     }
   }
 
@@ -99,10 +106,17 @@ class _ClassProfileState extends State<ClassProfile> {
     user.addAll(jsonDecode(authService.user.toUser()));
     super.initState();
     widget.tabController.animation!.addListener(() {
+      if (!mounted) return;
       setState(() {
         tabIndex = widget.tabController.index;
       });
     });
+  }
+
+  @override
+  void dispose() {
+    widget.tabController.animation?.removeListener(() {});
+    super.dispose();
   }
 
   @override

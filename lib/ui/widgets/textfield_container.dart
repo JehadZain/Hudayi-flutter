@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hudayi/ui/helper/AppColors.dart';
+import 'package:hudayi/ui/helper/app_colors.dart';
 
 class TextFieldContainer extends StatefulWidget {
   final Decoration? containerDecoration;

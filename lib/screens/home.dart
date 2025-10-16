@@ -3,19 +3,19 @@ import 'dart:convert';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/services.dart';
 import 'package:hudayi/screens/mainPages/areas.dart';
-import 'package:hudayi/screens/mainPages/azkar/mainAzkar.dart';
+import 'package:hudayi/screens/mainPages/azkar/main_Azkar.dart';
 import 'package:hudayi/screens/mainPages/login.dart';
 import 'package:hudayi/screens/mainPages/main.dart';
 import 'package:hudayi/screens/mainPages/quran/quran.dart';
 import 'package:hudayi/services/API/api.dart';
-import 'package:hudayi/ui/helper/AppColors.dart';
-import 'package:hudayi/ui/helper/AppConstants.dart';
-import 'package:hudayi/ui/helper/AppFunctions.dart';
-import 'package:hudayi/ui/helper/AppIcons.dart';
-import 'package:hudayi/ui/widgets/bottomBarWidgets/bottomBar.dart';
+import 'package:hudayi/ui/helper/App_Colors.dart';
+import 'package:hudayi/ui/helper/App_Constants.dart';
+import 'package:hudayi/ui/helper/App_Functions.dart';
+import 'package:hudayi/ui/helper/App_Icons.dart';
+import 'package:hudayi/ui/widgets/bottomBarWidgets/bottom_Bar.dart';
 import 'package:flutter/material.dart';
 import 'package:hudayi/l10n/app_localizations.dart';
-import 'package:hudayi/ui/helper/AppDialog.dart';
+import 'package:hudayi/ui/helper/App_Dialog.dart';
 import 'package:hudayi/ui/widgets/drawer.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,15 +25,15 @@ import '../models/user_model.dart';
 
 class HomeScreen extends StatefulWidget {
   final int? currentIndex;
-  final bool? is_user_2;
-  const HomeScreen({super.key, this.currentIndex, this.is_user_2});
+  final bool? isUser2;
+  const HomeScreen({super.key, this.currentIndex, this.isUser2});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var authService;
+  late AuthService authService;
   Map version = {};
   @override
   void didChangeDependencies() {
@@ -57,15 +57,17 @@ class _HomeScreenState extends State<HomeScreen> {
       );
 
       final prefs = await SharedPreferences.getInstance();
-      if (widget.is_user_2 == true) {
+      if (widget.isUser2 == true) {
         if (prefs.getString('user_2') != null) {
           Map user = jsonDecode(prefs.getString('user_2')!);
           authService.register(jsonEncode(user));
           version = await ApiService().checkVersion(
               jsonDecode(authService.user.toUser())["token"], '1.0.1');
           if (version["isCorrectVersion"] == false) {
-            // ignore: use_build_context_synchronously
+                if (!mounted) return;
+
             showCustomDialog(
+              
                 context,
                 translate(context).outdated_version_message,
                 AppConstants.appLogo,
@@ -86,6 +88,8 @@ class _HomeScreenState extends State<HomeScreen> {
               jsonDecode(authService.user.toUser())["token"], '1.3.3');
           if (version["isCorrectVersion"] == false) {
             // ignore: use_build_context_synchronously
+                if (!mounted) return;
+
             showCustomDialog(
               context,
               translate(context).outdated_version_message,

@@ -2,7 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hudayi/l10n/l10n.dart';
-import 'package:hudayi/models/Languageprovider.dart';
+import 'package:hudayi/models/language_provider.dart';
 import 'package:hudayi/models/user_model.dart';
 import 'package:hudayi/screens/home.dart';
 import 'package:hudayi/services/network_info.dart';
@@ -13,7 +13,6 @@ import 'package:hudayi/l10n/app_localizations.dart';
 import 'package:hudayi/ui/widgets/custom_scroll_bhaviour.dart';
 import 'package:hudayi/ui/widgets/translations.dart';
 import 'package:provider/provider.dart';
-import 'dart:ui' as ui;
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,7 +27,7 @@ void main() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     try {
       final String sysytemLanguage =
-          ui.window.locale.languageCode.toString() == "tr" ? "tr" : "ar";
+          WidgetsBinding.instance.platformDispatcher.locale.languageCode.toString() == "tr" ? "tr" : "ar";
       String language =
           sharedPreferences.getString('language') ?? sysytemLanguage;
       return language == "tr" ? "tr" : "ar";
@@ -88,7 +87,7 @@ void initState() {
             create: (context) => AuthService(),
           ),
           ChangeNotifierProvider(
-            create: (context) => Languageprovider(),
+            create: (context) => LanguageProvider(),
           ),
           Provider<FirebaseAnalytics>.value(value: analytics),
           Provider<FirebaseAnalyticsObserver>.value(value: observer),
@@ -114,9 +113,9 @@ void initState() {
               final MediaQueryData data = MediaQuery.of(context);
               return MediaQuery(
                 data: data.copyWith(
-                    textScaler: TextScaler.linear(data.textScaleFactor > 1.2
+                    textScaler: TextScaler.linear(data.textScaler.scale(1) > 1.2
                         ? 1.2
-                        : data.textScaleFactor)),
+                        : data.textScaler.scale(1))),
                 child: ScrollConfiguration(
                   behavior: CustomScrollBehavior(),
                   child: GestureDetector(

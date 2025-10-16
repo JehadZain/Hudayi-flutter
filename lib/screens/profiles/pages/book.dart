@@ -1,7 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:hudayi/screens/add/add.dart';
-import 'package:hudayi/ui/helper/AppFunctions.dart';
+import 'package:hudayi/ui/helper/App_Functions.dart';
 
 class Book extends StatelessWidget {
   final ScrollController scrollController;

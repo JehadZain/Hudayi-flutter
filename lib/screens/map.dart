@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:hudayi/services/map_service.dart';
-import 'package:hudayi/ui/widgets/actionBar.dart';
+import 'package:hudayi/ui/widgets/action_Bar.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapPage extends StatefulWidget {
-  const MapPage({Key? key}) : super(key: key);
+  const MapPage({super.key});
 
   @override
   State<MapPage> createState() => MapPageState();
@@ -87,6 +87,7 @@ class MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin<Map
   late GoogleMapController _mapController;
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(

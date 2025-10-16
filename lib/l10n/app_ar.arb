@@ -464,9 +464,9 @@
     "addEpisode": "إضافة حلقة",
     "addEpisodeOrDivision": "إضافة حلقة أو شعبة",
     "addDivision": "إضافة شعبة",
-    "editEpisodeOrDivision": "تعديل الحلقة أو الشبعة",
+    "editEpisodeOrDivision": "تعديل الحلقة أو الشعبة",
     "editEpisode": "تعديل الحلقة",
-    "editDivision": "تعديل الشبعة",
+    "editDivision": "تعديل الشعبة",
     "numberOfActivities": "عدد الأنشطة",
     "numberOfLessons": "عدد الدروس",
     "numberOfStudents": "عدد الطلاب",
@@ -474,6 +474,6 @@
     "accountInactive_ar": "حسابك غير نشط",
     "accountPending_ar": "حسابك قيد الانتظار",
     "yourAccountDisabledOrApprovalStage":"تم تعطيل حسابك أو أنه في مرحلة الموافقة. يرجى الاتصال بمسؤول التطبيق.",
-    "usernameRestriction": "يمكن أن يحتوي اسم المستخدم على أحرف فقط (a-z, A-Z) وأرقام",
+"usernameRestriction": "يمكن أن يحتوي اسم المستخدم على أحرف (a-z, A-Z)،أرقام،(_)",
     "downloadTheApp":"حمل التحديث"
 }

@@ -1,11 +1,11 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:hudayi/ui/helper/AppFunctions.dart';
-import 'package:hudayi/ui/widgets/actionBar.dart';
+import 'package:hudayi/ui/helper/App_Functions.dart';
+import 'package:hudayi/ui/widgets/action_Bar.dart';
 import 'package:hudayi/ui/widgets/drawer.dart';
 
 class NotificationPage extends StatelessWidget {
-  const NotificationPage({Key? key}) : super(key: key);
+  const NotificationPage({super.key});
 
   @override
   Widget build(BuildContext context) {

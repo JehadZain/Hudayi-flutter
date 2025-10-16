@@ -2953,7 +2953,7 @@ abstract class AppLocalizations {
   /// No description provided for @usernameRestriction.
   ///
   /// In en, this message translates to:
-  /// **'Kullanıcı adı yalnızca harf (a-z, A-Z) ve rakam içerebilir'**
+  /// **'Kullanıcı adı yalnızca harf (a-z, A-Z), rakam ve alt çizgi (_) içerebilir'**
   String get usernameRestriction;
 
   /// No description provided for @downloadTheApp.

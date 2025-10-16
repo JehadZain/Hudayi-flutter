@@ -1436,13 +1436,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get addDivision => 'إضافة شعبة';
 
   @override
-  String get editEpisodeOrDivision => 'تعديل الحلقة أو الشبعة';
+  String get editEpisodeOrDivision => 'تعديل الحلقة أو الشعبة';
 
   @override
   String get editEpisode => 'تعديل الحلقة';
 
   @override
-  String get editDivision => 'تعديل الشبعة';
+  String get editDivision => 'تعديل الشعبة';
 
   @override
   String get numberOfActivities => 'عدد الأنشطة';
@@ -1468,7 +1468,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get usernameRestriction =>
-      'يمكن أن يحتوي اسم المستخدم على أحرف فقط (a-z, A-Z) وأرقام';
+      'يمكن أن يحتوي اسم المستخدم على أحرف (a-z, A-Z)،أرقام،(_)';
 
   @override
   String get downloadTheApp => 'حمل التحديث';

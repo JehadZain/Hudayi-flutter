@@ -1476,7 +1476,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get usernameRestriction =>
-      'Kullanıcı adı yalnızca harf (a-z, A-Z) ve rakam içerebilir';
+      'Kullanıcı adı yalnızca harf (a-z, A-Z), rakam ve alt çizgi (_) içerebilir';
 
   @override
   String get downloadTheApp => 'Güncellemeyi indir';

@@ -1,7 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:hudayi/models/surah.dart';
-import 'package:hudayi/ui/helper/AppColors.dart';
+import 'package:hudayi/ui/helper/App_Colors.dart';
 import 'package:hudayi/ui/widgets/drawer.dart';
 import 'package:pdfx/pdfx.dart';
 

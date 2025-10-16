@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:hudayi/models/user_model.dart';
 import 'package:hudayi/screens/add/add.dart';
 import 'package:hudayi/services/API/api.dart';
-import 'package:hudayi/ui/helper/AppColors.dart';
-import 'package:hudayi/ui/helper/AppConsts.dart';
-import 'package:hudayi/ui/helper/AppFunctions.dart';
-import 'package:hudayi/ui/widgets/CirculeProgress.dart';
-import 'package:hudayi/ui/widgets/listViewComponent.dart';
-import 'package:hudayi/ui/widgets/noData.dart';
+import 'package:hudayi/ui/helper/App_Colors.dart';
+import 'package:hudayi/ui/helper/App_Consts.dart';
+import 'package:hudayi/ui/helper/App_Functions.dart';
+import 'package:hudayi/ui/widgets/Circule_Progress.dart';
+import 'package:hudayi/ui/widgets/list_View_Component.dart';
+import 'package:hudayi/ui/widgets/no_Data.dart';
 import 'package:provider/provider.dart';
 
 class Admin extends StatefulWidget {

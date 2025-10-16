@@ -1,22 +1,22 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:hudayi/main.dart';
-import 'package:hudayi/models/Languageprovider.dart';
-import 'package:hudayi/ui/helper/AppColors.dart';
-import 'package:hudayi/ui/helper/AppConstants.dart';
-import 'package:hudayi/ui/helper/AppDialog.dart';
-import 'package:hudayi/ui/helper/AppFunctions.dart';
-import 'package:hudayi/ui/widgets/TextFields/DatePickerField.dart';
-import 'package:hudayi/ui/widgets/TextFields/DescriptiontextField.dart';
-import 'package:hudayi/ui/widgets/TextFields/OneSelectionField.dart';
-import 'package:hudayi/ui/widgets/TextFields/NumberTextField.dart';
-import 'package:hudayi/ui/widgets/TextFields/StringTextField.dart';
-import 'package:hudayi/ui/widgets/TextFields/phoneTextField.dart';
+import 'package:hudayi/models/language_provider.dart';
+import 'package:hudayi/ui/helper/app_colors.dart';
+import 'package:hudayi/ui/helper/app_constants.dart';
+import 'package:hudayi/ui/helper/app_dialog.dart';
+import 'package:hudayi/ui/helper/app_functions.dart';
+import 'package:hudayi/ui/widgets/TextFields/date_picker_field.dart';
+import 'package:hudayi/ui/widgets/TextFields/description_text_field.dart';
+import 'package:hudayi/ui/widgets/TextFields/one_selection_field.dart';
+import 'package:hudayi/ui/widgets/TextFields/number_text_field.dart';
+import 'package:hudayi/ui/widgets/TextFields/string_text_field.dart';
+import 'package:hudayi/ui/widgets/TextFields/phone_text_field.dart';
 import 'package:hudayi/ui/widgets/drawer.dart';
-import 'package:hudayi/ui/widgets/dropDownBottomSheet.dart';
-import 'package:hudayi/ui/widgets/pageHeader.dart';
-import 'package:hudayi/ui/widgets/pickers/imagePicker.dart';
-import 'package:hudayi/ui/widgets/saveButton.dart';
+import 'package:hudayi/ui/widgets/drop_down_bottom_sheet.dart';
+import 'package:hudayi/ui/widgets/page_header.dart';
+import 'package:hudayi/ui/widgets/pickers/image_picker.dart';
+import 'package:hudayi/ui/widgets/save_button.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
@@ -76,13 +76,16 @@ class _AddPageState extends State<AddPage> with AutomaticKeepAliveClientMixin<Ad
             setState(() {});
           });
         } else {
+          if (!mounted) return;
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             backgroundColor: AppColors.primary,
             content: Text(translate(context).image_size_exceeded, style: TextStyle(fontFamily: getFontName(context), color: Colors.white)),
           ));
         }
       });
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 
   deleteOnTap(index) {
@@ -116,13 +119,16 @@ class _AddPageState extends State<AddPage> with AutomaticKeepAliveClientMixin<Ad
             setState(() {});
           });
         } else {
+          if (!mounted) return;
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             backgroundColor: AppColors.primary,
             content: Text(translate(context).image_size_exceeded_message, style: TextStyle(fontFamily: getFontName(context), color: Colors.white)),
           ));
         }
       });
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -161,10 +167,15 @@ class _AddPageState extends State<AddPage> with AutomaticKeepAliveClientMixin<Ad
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
+    super.build(context);
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        if (didPop) {
+          return;
+        }
         if (widget.isAcceptence == true) {
-          return Future.value(true);
+          Navigator.of(context).pop();
         } else if (widget.fields[0]["value"] != null) {
           showCustomDialog(context, translate(context).leave_page_confirmation, AppConstants.appLogo, "exit", () {
             try {
@@ -192,9 +203,8 @@ class _AddPageState extends State<AddPage> with AutomaticKeepAliveClientMixin<Ad
               Navigator.of(context).pop();
             }
           });
-          return Future.value(true);
         } else {
-          return Future.value(true);
+          Navigator.of(context).pop();
         }
       },
       child: Scaffold(
@@ -272,6 +282,7 @@ class _AddPageState extends State<AddPage> with AutomaticKeepAliveClientMixin<Ad
                               // ignore: use_build_context_synchronously
                               if (isConnected) {
                                 //TODO: TRANSLATE
+                                if (!mounted) return;
                                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                   content: Text(status == "SUCCESS" ? "تمت العملية بنجاح" : "تمت العملية بنجاح و بنتظار الموافقة من المدير العام",
                                       style: TextStyle(fontFamily: getFontName(context))),
@@ -280,6 +291,7 @@ class _AddPageState extends State<AddPage> with AutomaticKeepAliveClientMixin<Ad
                               }
 
                               Future.delayed(const Duration(seconds: 1), () {
+                                if (!mounted) return;
                                 Navigator.of(context).pop();
                               });
 
@@ -300,6 +312,7 @@ class _AddPageState extends State<AddPage> with AutomaticKeepAliveClientMixin<Ad
                               }
                             } else if (status == "Duplicate") {
                               // ignore: use_build_context_synchronously
+                              if (!mounted) return;
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(translate(context).item_already_exists, style: TextStyle(fontFamily: getFontName(context))),
                                 duration: const Duration(milliseconds: 500),
@@ -315,22 +328,26 @@ class _AddPageState extends State<AddPage> with AutomaticKeepAliveClientMixin<Ad
                                   'screen_class': "Adding",
                                 },
                               );
+                              if (!mounted) return;
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(translate(context).unexpected_error_message, style: TextStyle(fontFamily: getFontName(context))),
                                 duration: const Duration(milliseconds: 500),
                               ));
                             } else {
+                              if (!mounted) return;
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(status, style: TextStyle(fontFamily: getFontName(context))),
                                 duration: const Duration(milliseconds: 500),
                               ));
                             }
                             Future.delayed(const Duration(milliseconds: 850), () {
+                              if (!mounted) return;
                               Navigator.of(context).pop();
                             });
                             {}
                           }
                         } catch (e, st) {
+                          if (!mounted) return;
                           Navigator.of(context).pop();
                           await FirebaseAnalytics.instance.logEvent(
                             name: "an_expected_${widget.englishTitle}_$e",
@@ -340,6 +357,7 @@ class _AddPageState extends State<AddPage> with AutomaticKeepAliveClientMixin<Ad
                             },
                           );
                           if (isConnected) {
+                            if (!mounted) return;
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(translate(context).unexpected_error_occurred, style: TextStyle(fontFamily: getFontName(context))),
                               duration: const Duration(milliseconds: 500),
@@ -645,6 +663,7 @@ class _TextFieldForState extends State<TextFieldFor> {
                                                           if (fileLength <= maxSizeInBytes) {
                                                             i["value"].add(value);
                                                           } else {
+                                                            if (!mounted) return;
                                                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                               backgroundColor: AppColors.primary,
                                                               content: Text(translate(context).image_exceeds_the_maximum_size,
@@ -670,7 +689,7 @@ class _TextFieldForState extends State<TextFieldFor> {
 Future<Object?> showLoadingDialog(BuildContext context) {
   return showGeneralDialog(
     context: context,
-    barrierColor: Colors.white.withOpacity(0.5),
+    barrierColor: Colors.white.withAlpha(128),
     barrierDismissible: false,
     barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
     transitionDuration: const Duration(milliseconds: 200),
@@ -681,10 +700,8 @@ Future<Object?> showLoadingDialog(BuildContext context) {
       );
     },
     pageBuilder: (_, __, ___) {
-      return WillPopScope(
-        onWillPop: () async {
-          return false;
-        },
+      return PopScope(
+        canPop: false,
         child: Align(
           alignment: Alignment.center,
           child: CircularProgressIndicator(color: Theme.of(context).primaryColor),

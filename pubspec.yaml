@@ -68,6 +68,7 @@ dependencies:
   firebase_core:
   flutter_gen: ^5.11.0
   build_runner: ^2.8.0
+  http: ^1.5.0
 flutter_icons:
   #  image_path: "assets/images/icon-128x128.png"
   image_path_android: "assets/images/appLogo.png"

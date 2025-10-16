@@ -1,4 +1,4 @@
-import 'package:hudayi/ui/helper/AppConsts.dart';
+import 'package:hudayi/ui/helper/app_consts.dart';
 
 class Thekr {
   late final String id;

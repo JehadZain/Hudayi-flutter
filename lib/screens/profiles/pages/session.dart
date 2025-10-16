@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hudayi/models/user_model.dart';
 import 'package:hudayi/screens/add/add.dart';
-import 'package:hudayi/screens/profiles/pages/subClass.dart';
+import 'package:hudayi/screens/profiles/pages/sub_Class.dart';
 import 'package:hudayi/services/API/api.dart';
-import 'package:hudayi/ui/helper/AppFunctions.dart';
-import 'package:hudayi/ui/widgets/CirculeProgress.dart';
-import 'package:hudayi/ui/widgets/pageHeader.dart';
+import 'package:hudayi/ui/helper/App_Functions.dart';
+import 'package:hudayi/ui/widgets/Circule_Progress.dart';
+import 'package:hudayi/ui/widgets/page_Header.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 

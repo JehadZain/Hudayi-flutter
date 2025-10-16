@@ -1,4 +1,4 @@
-import 'package:hudayi/ui/helper/AppIcons.dart';
+import 'package:hudayi/ui/helper/App_Icons.dart';
 import 'package:flutter/material.dart';
 
 enum StarType { circle, normal }

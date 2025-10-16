@@ -474,6 +474,6 @@
     "accountInactive_tr": "Hesabınız aktif değil",
     "accountPending_tr": "Hesabınız beklemede",
     "yourAccountDisabledOrApprovalStage":"Hesabınız devre dışı bırakıldı veya onay aşamasında. Lütfen uygulama yöneticisine başvurun.",
-    "usernameRestriction": "Kullanıcı adı yalnızca harf (a-z, A-Z) ve rakam içerebilir",
+    "usernameRestriction": "Kullanıcı adı yalnızca harf (a-z, A-Z), rakam ve alt çizgi (_) içerebilir",
     "downloadTheApp":"Güncellemeyi indir"
 }

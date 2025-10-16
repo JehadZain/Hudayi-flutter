@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hudayi/ui/helper/AppIcons.dart';
+import 'package:hudayi/ui/helper/App_Icons.dart';
 
 class ThekrTitleCard extends StatelessWidget {
   const ThekrTitleCard({Key? key, this.title}) : super(key: key);

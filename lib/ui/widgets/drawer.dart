@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hudayi/main.dart';
-import 'package:hudayi/models/Languageprovider.dart';
+import 'package:hudayi/models/language_provider.dart';
 import 'package:hudayi/models/user_model.dart';
 import 'package:hudayi/screens/analytics/index.dart';
 import 'package:hudayi/screens/drawerPages/activities/activities.dart';
@@ -15,12 +15,12 @@ import 'package:hudayi/screens/filters/teacher_filter.dart';
 import 'package:hudayi/screens/filters/student_filter.dart';
 import 'package:hudayi/screens/home.dart';
 import 'package:hudayi/screens/mainPages/login.dart';
-import 'package:hudayi/ui/helper/AppColors.dart';
-import 'package:hudayi/ui/helper/AppConstants.dart';
-import 'package:hudayi/ui/helper/AppConsts.dart';
-import 'package:hudayi/ui/helper/AppDialog.dart';
-import 'package:hudayi/ui/helper/AppFunctions.dart';
-import 'package:hudayi/ui/widgets/appLogo.dart';
+import 'package:hudayi/ui/helper/App_Colors.dart';
+import 'package:hudayi/ui/helper/App_Constants.dart';
+import 'package:hudayi/ui/helper/App_Consts.dart';
+import 'package:hudayi/ui/helper/App_Dialog.dart';
+import 'package:hudayi/ui/helper/App_Functions.dart';
+import 'package:hudayi/ui/widgets/app_logo.dart';
 import 'package:hudayi/ui/widgets/helper.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -55,7 +55,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
         ? const Login()
         : SafeArea(
             child: Container(
-              width: 300,
+              width: 370,
               decoration: const BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -65,7 +65,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     offset: Offset(0, 2),
                   )
                 ],
-                borderRadius: BorderRadiusDirectional.only(topEnd: Radius.circular(12)),
+                borderRadius:
+                    BorderRadiusDirectional.only(topEnd: Radius.circular(12)),
               ),
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
@@ -74,14 +75,18 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   children: [
                     Helper.sizedBoxH20,
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
                       child: Row(
                         children: [
                           const AppLogo(height: 45),
                           Helper.sizedBoxW10,
                           Text(
                             translate(context).organization_name,
-                            style: const TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w500),
                           )
                         ],
                       ),
@@ -132,7 +137,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           text: translate(context).types_of_activities,
                           onTap: () {
                             Navigator.of(context).pop();
-                            Navigator.of(context).push(createRoute(const Activites()));
+                            Navigator.of(context)
+                                .push(createRoute(const Activites()));
                           }),
                     if (user["role"] == "admin")
                       drwerRaw(
@@ -140,7 +146,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           text: translate(context).book,
                           onTap: () {
                             Navigator.of(context).pop();
-                            Navigator.of(context).push(createRoute(const Books()));
+                            Navigator.of(context)
+                                .push(createRoute(const Books()));
                           }),
                     if (user["role"] == "admin")
                       drwerRaw(
@@ -148,7 +155,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           text: translate(context).subjects,
                           onTap: () {
                             Navigator.of(context).pop();
-                            Navigator.of(context).push(createRoute(const Subjects()));
+                            Navigator.of(context)
+                                .push(createRoute(const Subjects()));
                           }),
                     if (user["role"] == "admin")
                       drwerRaw(
@@ -156,7 +164,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           text: translate(context).managers,
                           onTap: () {
                             Navigator.of(context).pop();
-                            Navigator.of(context).push(createRoute(const Admins()));
+                            Navigator.of(context)
+                                .push(createRoute(const Admins()));
                           }),
                     if (user["role"] == "admin")
                       drwerRaw(
@@ -164,7 +173,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           text: translate(context).awaitingApproval,
                           onTap: () {
                             Navigator.of(context).pop();
-                            Navigator.of(context).push(createRoute(const Acceptence()));
+                            Navigator.of(context)
+                                .push(createRoute(const Acceptence()));
                           }),
                     if (user["role"] == "admin")
                       drwerRaw(
@@ -172,7 +182,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           text: translate(context).statistics,
                           onTap: () {
                             Navigator.of(context).pop();
-                            Navigator.of(context).push(createRoute(const Analytics()));
+                            Navigator.of(context)
+                                .push(createRoute(const Analytics()));
                           }),
 
                     if (user["role"] == "admin")
@@ -181,7 +192,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           text: translate(context).search_filter_student,
                           onTap: () {
                             Navigator.of(context).pop();
-                            Navigator.of(context).push(createRoute(const StudentFilterPage()));
+                            Navigator.of(context)
+                                .push(createRoute(const StudentFilterPage()));
                           }),
                     if (user["role"] == "admin")
                       drwerRaw(
@@ -189,7 +201,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           text: translate(context).search_filter_teacher,
                           onTap: () {
                             Navigator.of(context).pop();
-                            Navigator.of(context).push(createRoute(const TeacherFilterPage()));
+                            Navigator.of(context)
+                                .push(createRoute(const TeacherFilterPage()));
                           }),
 
                     drwerRaw(
@@ -203,7 +216,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                         }),
                     drwerRaw(
                         icon: user.isEmpty ? Icons.login : Icons.logout,
-                        text: user.isEmpty ? translate(context).log_in : translate(context).logout,
+                        text: user.isEmpty
+                            ? translate(context).log_in
+                            : translate(context).logout,
                         onTap: () {
                           if (user.isEmpty) {
                             Navigator.of(context).pushAndRemoveUntil(
@@ -212,19 +227,27 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                                 )),
                                 (Route<dynamic> route) => false);
                           } else {
-                            showCustomDialog(context, translate(context).confirmLogout, AppConstants.appLogo, "logout", () async {
+                            showCustomDialog(
+                                context,
+                                translate(context).confirmLogout,
+                                AppConstants.appLogo,
+                                "logout", () async {
                               Navigator.of(context).pop();
                               Navigator.of(context).pop();
-                              final prefs = await SharedPreferences.getInstance();
+                              final prefs =
+                                  await SharedPreferences.getInstance();
                               prefs.remove('user');
-                              Provider.of<AuthService>(context, listen: false).logout();
-                              Navigator.of(context).pushAndRemoveUntil(createRoute(const HomeScreen()), (Route<dynamic> route) => false);
+                              Provider.of<AuthService>(context, listen: false)
+                                  .logout();
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  createRoute(const HomeScreen()),
+                                  (Route<dynamic> route) => false);
                             });
                           }
                         }),
                     drwerRaw(
                         icon: Icons.language,
-                        text:translate(context).chooseLanguage,
+                        text: translate(context).chooseLanguage,
                         onTap: () => Get.dialog(const ChangeLanguageDialog())),
 
                     // drwerRaw(
@@ -274,7 +297,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           color: Color(0xFFE0E3E7),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 0, 8),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(16, 8, 0, 8),
                           child: GestureDetector(
                             // onTap: isConnected
                             //     ? () {
@@ -314,13 +338,18 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            12, 0, 0, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          user.isEmpty ? translate(context).log_in : '${user["first_name"]} ${user["last_name"]}',
+                                          user.isEmpty
+                                              ? translate(context).log_in
+                                              : '${user["first_name"]} ${user["last_name"]}',
                                           style: const TextStyle(
                                             color: Color(0xFF101213),
                                             fontSize: 18,
@@ -329,7 +358,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                                         ),
                                         if (authService.user.toUser() != "null")
                                           Padding(
-                                            padding: const EdgeInsetsDirectional.only(end: 14.0),
+                                            padding: const EdgeInsetsDirectional
+                                                .only(end: 14.0),
                                             child: Text(
                                               user["email"] ?? "",
                                               style: const TextStyle(
@@ -355,7 +385,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                         Container(
                           color: AppColors.primary,
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 0, 8),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                16, 8, 0, 8),
                             child: GestureDetector(
                               onTap: () {
                                 launchUrl(
@@ -365,14 +396,18 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                               },
                               child: Center(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      12, 0, 0, 0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.only(end: 14.0, top: 2),
+                                        padding:
+                                            const EdgeInsetsDirectional.only(
+                                                end: 14.0, top: 2),
                                         child: Text(
                                           translate(context).operatedBy,
                                           textAlign: TextAlign.center,
@@ -384,7 +419,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.only(end: 14.0, top: 4),
+                                        padding:
+                                            const EdgeInsetsDirectional.only(
+                                                end: 14.0, top: 4),
                                         child: Text(
                                           translate(context).appVersion,
                                           textAlign: TextAlign.center,
@@ -416,7 +453,9 @@ class drwerRaw extends StatelessWidget {
   final IconData icon;
   final String text;
   final Function()? onTap;
-  const drwerRaw({Key? key, required this.icon, required this.text, required this.onTap}) : super(key: key);
+  const drwerRaw(
+      {Key? key, required this.icon, required this.text, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -460,7 +499,9 @@ class drwerRaw extends StatelessWidget {
                       color: Color(0xFF57636C),
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      fontFamily: translate(context).localeName == "tr" ? "Roboto" : null,
+                      fontFamily: translate(context).localeName == "tr"
+                          ? "Roboto"
+                          : null,
                     ),
                   ),
                 ),
@@ -481,14 +522,16 @@ class ChangeLanguageDialog extends StatefulWidget {
 }
 
 class _ChangeLanguageDialogState extends State<ChangeLanguageDialog> {
-  String language = Get.locale!.languageCode; // Initialize with the current language
+  String language =
+      Get.locale!.languageCode; // Initialize with the current language
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor:Colors.white,
+      backgroundColor: Colors.white,
       actionsPadding: EdgeInsets.zero,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(7.0))),
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(7.0))),
       title: Text(translate(context).chooseLanguage),
       content: Column(
         mainAxisSize: MainAxisSize.min,
@@ -519,16 +562,18 @@ class _ChangeLanguageDialogState extends State<ChangeLanguageDialog> {
               style: const TextStyle(color: Colors.black)),
         ),
         TextButton(
-          onPressed: () async{
-            SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+          onPressed: () async {
+            SharedPreferences sharedPreferences =
+                await SharedPreferences.getInstance();
             sharedPreferences.setString("language", language);
-            var languageProvider = Provider.of<Languageprovider>(context, listen: false);
-            languageProvider.setLocale( Locale(language));
-            Get.updateLocale(( Locale(language)));
+            var languageProvider =
+                Provider.of<LanguageProvider>(context, listen: false);
+            languageProvider.setLocale(Locale(language));
+            Get.updateLocale((Locale(language)));
             Get.back(); // Close the dialog
           },
           child: Text(translate(context).confirm,
-              style: TextStyle(color:Colors.black)),
+              style: TextStyle(color: Colors.black)),
         ),
       ],
     );

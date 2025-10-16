@@ -1,5 +1,6 @@
 {
     "dart.flutterSdkPaths": [
         "D:\\flutter_windows_3.19.3-stable\\flutter\\bin"
-    ]
+    ],
+    "cmake.ignoreCMakeListsMissing": true
 }

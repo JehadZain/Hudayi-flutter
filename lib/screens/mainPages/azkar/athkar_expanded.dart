@@ -1,7 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:hudayi/models/thekr.dart';
-import 'package:hudayi/ui/styles/appBoxShadow.dart';
+import 'package:hudayi/ui/styles/app_Box_Shadow.dart';
 import 'package:hudayi/ui/widgets/athkar_title.dart';
 import 'package:hudayi/ui/widgets/close_button.dart';
 import 'package:hudayi/ui/widgets/drawer.dart';
